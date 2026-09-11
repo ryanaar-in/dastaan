@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dastaan</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Hind:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins','Hind',sans-serif}
+body{background:#060609;color:#fff;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-2;background:#060609}
+.bg::before{content:"";position:absolute;inset:0;background:radial-gradient(800px at 50% 50%, rgba(255,255,255,0.06), transparent 70%)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 6%;background:rgba(10,10,12,0.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:50}
+.logo{font-weight:800;font-size:1.6rem;background:linear-gradient(90deg,#ff6b9d,#c084fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero{text-align:center;padding:70px 20px 20px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;letter-spacing:-1px}
+.hero p{color:#8a8f9e;margin-top:10px}
+.cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px 0}
+.cat{padding:9px 20px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);cursor:pointer;transition:.3s;font-size:0.9rem}
+.cat.active,.cat:hover{background:#fff;color:#000}
+.grid{display:flex;flex-direction:column;gap:28px;padding:20px 4% 80px;max-width:1100px;margin:auto;}
+.glow-wrap{position:relative;padding:1.6px;border-radius:24px;background: var(--grad);box-shadow: 0 0 35px var(--glow);transition:.4s;animation:pop .5s ease both;}
+.glow-wrap:hover{transform:translateY(-4px); box-shadow:0 0 50px var(--glow)}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.card-inner{background:#121214;border-radius:22px;padding:22px 22px;display:flex;gap:20px;min-height:220px;}
+.card-left{flex:1.6;display:flex;flex-direction:column;}
+.card-top{font-size:18px;opacity:0.8;margin-bottom:12px;color:#8affd0;display:flex;justify-content:space-between;align-items:center}
+.card-inner p{font-family:'Hind'; font-size:1.15rem; line-height:1.7; color:#e6e6ea;white-space:pre-line; flex:1;}
+.card-right{flex:0.7;border-left:1px solid rgba(255,255,255,0.08);padding-left:20px;display:flex;flex-direction:column;justify-content:center;}
+.rating-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.rating-title span{color:#5fffd0}
+.stars{display:flex;gap:6px;font-size:26px;cursor:pointer;color:#5fffd0;margin:8px 0 12px}
+.stars span{transition:.2s}
+.stars span:hover{transform:scale(1.25)}
+.rating-bar{width:100%;height:7px;background:#222;border-radius:10px;overflow:hidden;margin-bottom:16px}
+.rating-fill{height:100%;background:linear-gradient(90deg,#00d4ff,#5fffd0);border-radius:10px;transition:.4s}
+.acts{display:flex;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08)}
+.btn{flex:1;padding:9px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);color:#fff;cursor:pointer;font-weight:600;font-size:0.85rem;transition:.2s}
+.btn:hover{background:rgba(255,255,255,0.12)}
+.btn.liked{background:#fff;color:#000}
+@media(max-width:800px){.card-inner{flex-direction:column}.card-right{border-left:none;border-top:1px solid rgba(255,255,255,0.08);padding-left:0;padding-top:16px}}
+.music-panel{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:rgba(18,18,20,0.95);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:18px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  z-index:999;
+  overflow:visible;
+}
+.music-panel select{
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:8px 12px;
+  border-radius:10px;
+  outline:none;
+  font-weight:600;
+  max-width:110px;
+}
+.music-panel button{
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+/* Phone ke liye fix */
+@media(max-width:600px){
+  .music-panel{
+    bottom:0;
+    right:0;
+    left:0;
+    border-radius:18px 18px 0 0;
+    justify-content:space-between;
+    padding:14px 16px;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+  .music-panel select{
+    flex:1;
+    max-width:none;
+  }
+}
+footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,0.07);color:#666;margin-top:20px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
+.modal.active{display:flex}
+.modal-box{width:100%;max-width:520px;background:#121214;border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:26px}
+.modal-box textarea{width:100%;height:120px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:14px;color:#fff;outline:none;resize:none;margin:12px 0}
+.modal-box select{width:100%;padding:12px;background:#1E1E20;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;outline:none}
+.modal-box select option{background:#1E1E20;color:#fff}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav><div class="logo">💗 शब्दों का कारवां</div><div style="display:flex;gap:10px;align-items:center"><div style="color:#666;font-size:.9rem" class="hide-m">Play Music for better experience.</div><button onclick="openAdd()" style="background:#fff;color:#000;border:none;padding:8px 16px;border-radius:100px;font-weight:700;cursor:pointer">Add Shayari</button></div></nav>
+<div class="hero">
+<h1>दास्तान</h1>
+<p>Rest in Paradise to all those who are no longer here with us.</p>
+<p>The world is cruel, now more than ever - unkind and unforgiving</p>
+<p>Whoever is reading this i wish you good health and spirits!</p>
+<div class="cats">
+<div class="cat active" onclick="filterCat('All',this)">All</div>
+<div class="cat" onclick="filterCat('Love',this)">Love</div>
+<div class="cat" onclick="filterCat('Sad',this)">Sad</div>
+<div class="cat" onclick="filterCat('Romantic',this)">Romantic</div>
+<div class="cat" style="background:linear-gradient(90deg,#ff5a9a,#ff7a2f);border:none;color:#fff" onclick="showTrending(this)">Trending</div>
+</div>
+</div>
+<div class="grid" id="grid"></div>
+
+<div class="modal" id="addModal">
+<div class="modal-box">
+<h2 style="background:linear-gradient(90deg,#ff6b9d,#c084fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Write Your Words.</h2>
+<p style="color:#8a8f9e;font-size:0.9rem;margin-top:6px">After adding your words, we will add it shortly.</p>
+<textarea id="newText" placeholder="Write yours here..."></textarea>
+<select id="newCat"><option value="Love">Love</option><option value="Sad">Sad</option><option value="Romantic">Romantic</option></select>
+<div style="display:flex;gap:10px;margin-top:16px"><button class="btn" onclick="closeAdd()" style="padding:12px">Cancel</button><button class="btn" id="sendBtn" onclick="submitShayari()" style="padding:12px;background:#fff;color:#000">Send for Verification</button></div>
+<p id="sentMsg" style="display:none;color:#5fffd0;text-align:center;margin-top:12px">✅ Done, We will add it shortly..</p>
+</div>
+</div>
+
+<div class="music-panel">
+<select id="musicSelect" onchange="changeMusic()">
+  <option value="music/m1.mp3">Music 1</option>
+  <option value="music/m2.mp3">Music 2</option>
+  <option value="music/m3.mp3">Music 3</option>
+  <option value="music/m4.mp3">Music 4</option>
+  <option value="music/m5.mp3">Music 5</option>
+  
+</select>
+<button id="musicBtn" onclick="toggleMusic()">▶ Play</button>
+<audio id="bgMusic" loop></audio>
+</div>
+<footer><p>💗 Smile :) ❤️</p></footer>
+<script>
+const gradients = [
+  { grad: "linear-gradient(135deg,#ff5a9a,#ff7a2f)", glow:"rgba(255,90,154,0.45)" },
+  { grad: "linear-gradient(135deg,#6ecbff,#5b6eff)", glow:"rgba(110,203,255,0.45)" },
+  { grad: "linear-gradient(135deg,#b16eff,#ff7ad1)", glow:"rgba(177,110,255,0.45)" },
+  { grad: "linear-gradient(135deg,#34ff9d,#2fb5ff)", glow:"rgba(52,255,157,0.4)" },
+  { grad: "linear-gradient(135deg,#ff8e53,#ff5e62)", glow:"rgba(255,94,98,0.45)" },
+  { grad: "linear-gradient(135deg,#ffe53b,#ff2525)", glow:"rgba(255,229,59,0.35)" },
+];
+const defaultShayaris = [
+{ text: "अपनी तबीयत औरों से जुदा लगती है,\nसाँस लेता हूँ तो ज़ख्मों को हवा लगती है।\nकभी मुझसे राज़ी, कभी मुझसे ख़फ़ा लगती है,\nज़िंदगी बता तू मेरी क्या लगती है।", cat: "Sad" },
+{ text: "पानी पर नाम कभी लिखते नहीं,\nपानी पर लिखे नाम कभी टिकते नहीं,\nवो समझते है कि हम पत्थर दिल है,\nकि वो समझते है कि हम पत्थर दिल है,\nलेकिन पत्थर पे लिखे नाम कभी मिटते नहीं।", cat: "Love" },
+{ text: "शायद किस्मत का यही सितारा था,\nऔर तुमको भी आखिर यही गवारा था,\nमैंने तो वो खोया जो मेरा था ही नहीं,\nतुमने वो खो दिया जो सिर्फ तुम्हारा था।", cat: "Sad" },
+{ text: "बहुत कुछ सोच कर सोचा है किनारा कर लिया जाए,\nअब तेरी ही यादों से गुज़ारा कर लिया जाए,\nएक समय था जब अनजान थे हम दोनों,\nअब वही हाल फिर से दोबारा कर लिया जाए।", cat: "Sad" },
+{ text: "कि सूखे पत्तों की तरह बिखरे हुए थे हम।\nकि सूखे पत्तों की तरह बिखरे हुए थे हम।\nकिसी ने समेटा भी तो सिर्फ जलने के लिए।", cat: "Sad" },
+{ text: "तुम हकीकत नहीं हसरत हो।\nजो मिले ख्वाब में वो दौलत हो।\nकिस तरह छोड़ दूँ तुम्हें जाना\nतुम मेरी ज़िन्दगी की आदत हो।\nदास्ताँ खत्म होने वाली है।\nतुम मेरी आखिरी मोहब्बत हो।", cat: "Love" },
+{ text: "शायर तो हम थे ना कभी,\nआपकी आने की आहट ने हमें अल्फ़ाज़ों को पिरोना सिखा दिया।\nकहना तो बहुत कुछ था आपसे,\nआपके जाने की ज़िद ने हमें रोना सिखा दिया।", cat: "Sad" },
+{ text: "तुम जब छोड़ कर गए थे बहुत बुरा लगता था,\nनिकल जाए दम इतना दर्द सहता था,\nफिर एक बात सीखी थी,\nकिसी के जाने से ये जीवन रुकता नहीं,\nअब तुम याद भी आओ तो ये दिल दुखता नहीं।", cat: "Sad" },
+{ text: "रोक देना जनाज़ा मेरा जब उसका घर आए,\nकहीं वो खिड़की से देखे और मेरा दिल धड़क जाए।", cat: "Love" },
+{ text: "उसकी डोली उठी,\nमेरा जनाज़ा उठा,\nफूल उसपर भी थे,\nफूल मुझपर भी थे,\nसहेलियां उसकी भी थीं,\nदोस्त मेरे भी थे,\nकाज़ी उधर भी था,\nमौलवी इधर भी था,\nउनका हँसना वहाँ,\nहमारा रोना यहाँ,\nवो सज के गई,\nमुझे सजाया गया,\nवो उठके गई,\nमुझे उठाया गया,\nफर्क सिर्फ इतना था उसे अपनाया गया,\nमुझे दफनाया गया।", cat: "Sad" },
+{ text: "आइए बैठिए, थोड़ा जाम लाया जाए,\nज़हन में एक काम लाया जाए,\nचलो बोलते हैं कल वाला झूठ,\nउसे भूला देंगे कहकर,\nजुबां पर उसका नाम लाया जाए।", cat: "Sad" },
+{ text: "कुछ सवाल हैं पूछने बनते थे, पूछे नहीं,\nकुछ जवाब हैं लेने बनते थे, लिए नहीं,\nकुछ काम हैं करने बनते थे, किए नहीं,\nकुछ खत हैं लिखने बनते थे, लिखे नहीं,\nकुछ चीजें तेरी देनी बनती थीं, दी नहीं,\nकुछ शिकायतें जो करनी बनती थीं, की नहीं,\nकुछ शराब जो बाकी है, तेरे कहने पर पी नहीं,\nअब इन बातों का फायदा क्या अब मेरा भी जी नहीं,\nअपना बताता हूँ आज भी उसे,\nवो जो मेरी कभी थी नहीं।", cat: "Sad" },
+{ text: "मैं तुझको चाँद कह दूँ ये मुमकिन तो है लेकिन,\nकोई तुझको इतनी गौर से देखे ये मुझे गवारा नहीं।", cat: "Love" },
+{ text: "मेरा हाल देख मोहब्बत भी शर्मिंदा है,\nकि यह शख्स सब कुछ हार गया मगर फिर भी जिंदा है।", cat: "Sad" },
+{ text: "सारी उम्र पूजते रहे लोग पत्थर के बनाए खुदा को,\nऔर हमने बस एक इंसान को चाहा तो गुनाह हो गया।", cat: "Love" },
+{ text: "उसकी गलियों से अब मैं गुजर नहीं पाता,\nएक आँसू भी अब आँखों से उतर नहीं पाता,\nएक तू है जो प्यार मुझसे करना नहीं चाहती,\nऔर एक मैं हूँ जो नफरत तुझसे कर नहीं पाता।", cat: "Sad" },
+{ text: "मुझे वो हर मिन्नत पे चाहिए था,\nआँखों की ज़ीनत पे चाहिए था,\nउसे मुफ़्त में ही पा लिया किसी ने,\nजो मुझे हर क़ीमत पे चाहिए था।", cat: "Love" },
+{ text: "प्यार में मौत से डरता कौन है,\nप्यार तो हो जाता है करता कौन है,\nहम तो कर दें प्यार में जान भी कुर्बान,\nपर पता तो चले, हमसे प्यार करता कौन है।", cat: "Love" },
+{ text: "वो जाते जाते कह गए हम सिर्फ ख्वाब में आएंगे,\nहमने कहा वादा तो करो हम ज़िन्दगी भर सो जाएंगे।", cat: "Love" },
+{ text: "हर शक्श पढ़ कर बैठा है यहां मोहब्बत की किताब मगर हर किसी को मोहब्बत समझ नहीं आती,\n ग़ज़लों ने बर्बाद कर दी कई ज़िंदगियां खुशनसीब है वो लोग जिन्हें शायरी समझ नहीं आती।", cat: "Love" },
+{ text: "साथ अगर दोगे तो मुस्कुरायेंगे ज़रूर,\nप्यार अगर दिल से करोगे तो निभायेंगे ज़रूर।\nराह में कितने भी कांटे क्यों ना हों,\nआवाज़ अगर दिल से दोगे तो आयेंगे ज़रूर।", cat: "Romantic" },
+{ text: "एक चाँद था मेरा, जो बादलों में कहीं खो गया...!\nबादल हटने का इंतज़ार किया,\nतो वो चाँद किसी और का हो गया...।", cat: "Sad"},
+{ text: "मैं कोई तारा जो चमके तो सारा आसमान हो तुम,\nमैं कोई झोपड़ी छोटी सी तो एक आलीशान मकान हो तुम,\nमैं कोई जौहरी अगर तो एक हीरा नायाब हो तुम,\nमैं अगर उलझन भरा सवाल तो मेरा जवाब हो तुम,\nमैं सुकून वाली नींद तो एक हसीन ख्वाब हो तुम,\nमैं अगर कोई पान देसी तो विलायती शराब हो तुम,\nकुछ बातें हैं मेरे बारे में जिनसे आज भी अनजान हो तुम,\nक्या जानती हो?\nमैं अगर साँस तुम्हारी तो मेरी जान हो तुम...।", cat: "Romantic" },
+{ text: "डरता हूँ किस से,\nकिसी को न देखने से,\nया किसी को न दिखाने से,\nसोचने से, या किसी को न सोचने से,\nरोने से, या किसी को न रुलाने से,\nहँसने से, या किसी को न हँसाने से,\nबोलने से, या खामोश रहने से,\nमरने से, या किसी को न मारने से,\nयाद करने से, या किसी की याद न बनने से,\nखुद से, या किसी से डर जाने से?", cat: "Sad" },
+
+{ text: "तेरे चेहरे की वो खूबसूरत तस्वीर कहाँ से लाऊँ,\nहर लम्हा तेरे साथ गुजरे ऐसी तकदीर कहाँ से लाऊँ,\nमैं माँगता हूँ हर सफर में साथ तेरा,\nतू ही बता मेरे हाथों में वो लकीर कहाँ से लाऊँ", cat: "Romantic" },
+];
+
+const approved = JSON.parse(localStorage.getItem('dastan_approved')||'[]');
+const shayaris = [...defaultShayaris, ...approved];
+
+function getLikeCount(i){ return parseInt(localStorage.getItem('like_count_'+i)||'0'); }
+
+function render(list){
+ const g=document.getElementById('grid'); g.innerHTML="";
+ list.forEach((s,i)=>{
+  let realIndex = shayaris.indexOf(s); if(realIndex===-1) realIndex=i;
+  let liked=localStorage.getItem('like_'+realIndex);
+  let rated=parseInt(localStorage.getItem('rate_'+realIndex) || 0);
+  let style = gradients[realIndex % gradients.length];
+  g.innerHTML+=`<div class="glow-wrap" style="--grad:${style.grad};--glow:${style.glow};animation-delay:${i*0.06}s">
+  <div class="card-inner">
+    <div class="card-left">
+      <div class="card-top"><span>Meri Adhoori Dastaan #${realIndex+1}</span></div>
+      <p>${s.text}</p>
+      <div class="acts">
+        <button class="btn ${liked?'liked':''}" onclick="likeThis(${realIndex},this)">${liked?'❤️ Liked':'🤍 Like'}</button>
+        <button class="btn" onclick="copyText(\`${s.text.replace(/`/g,'').replace(/\$/g,'')}\`)">📋 Copy</button>
+      </div>
+    </div>
+    <div class="card-right" id="right-${realIndex}">
+      <div class="rating-title" id="rt-${realIndex}">${rated===0 ? 'Rate this ✦' : `Rating <span>${rated}.0</span>/5 ⭐`}</div>
+      <div class="stars" id="stars-${realIndex}">${[1,2,3,4,5].map(n=>`<span onclick="rateThis(${realIndex},${n})">${n<=rated?'★':'☆'}</span>`).join('')}</div>
+      <div class="rating-bar"><div class="rating-fill" id="fill-${realIndex}" style="width:${rated*20}%"></div></div>
+      <div id="msg-${realIndex}" style="font-size:0.75rem;color:#777">${rated===0 ? 'Tap stars to rate' : 'Thanks for rating!'}</div>
+    </div>
+  </div></div>`;
+ });
+}
+render(shayaris);
+
+function rateThis(i,val){
+  localStorage.setItem('rate_'+i,val);
+  document.getElementById(`rt-${i}`).innerHTML = `Rating <span>${val}.0</span>/5 ⭐`;
+  document.getElementById(`fill-${i}`).style.width = (val*20)+'%';
+  document.getElementById(`stars-${i}`).innerHTML = [1,2,3,4,5].map(n=>`<span onclick="rateThis(${i},${n})">${n<=val?'★':'☆'}</span>`).join('');
+  document.getElementById(`msg-${i}`).innerText = 'Thanks for rating!';
+}
+function filterCat(c,el){document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');if(c==='All') render(shayaris); else render(shayaris.filter(s=>s.cat===c));}
+function showTrending(el){
+ document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+ let sorted = [...shayaris].sort((a,b)=> getLikeCount(shayaris.indexOf(b)) - getLikeCount(shayaris.indexOf(a)) );
+ render(sorted);
+}
+function likeThis(i,b){
+  if(localStorage.getItem('like_'+i)){ 
+    localStorage.removeItem('like_'+i); 
+    b.classList.remove('liked');
+    b.innerHTML = `🤍 Like`;
+  } else { 
+    localStorage.setItem('like_'+i,'1'); 
+    b.classList.add('liked');
+    b.innerHTML = `❤️ Liked`;
+  }
+}
+function copyText(t){navigator.clipboard.writeText(t);let e=event.target;e.innerText='✅ Copied';setTimeout(()=>e.innerText='📋 Copy',1200);}
+const music=document.getElementById('bgMusic'); const sel=document.getElementById('musicSelect'); music.src=sel.value; let playing=false;
+function changeMusic(){music.src=sel.value; if(playing) music.play();}
+function toggleMusic(){if(playing){music.pause();document.getElementById('musicBtn').innerText='▶ Play';}else{music.play().catch(()=>alert('Page pe ek bar click karo'));document.getElementById('musicBtn').innerText='⏸ Pause';} playing=!playing;}
+
+function openAdd(){document.getElementById('addModal').classList.add('active')}
+function closeAdd(){document.getElementById('addModal').classList.remove('active')}
+
+async function submitShayari(){
+ let text=document.getElementById('newText').value.trim();
+ let cat=document.getElementById('newCat').value;
+ if(!text) return alert("Write Something!");
+ let btn=document.getElementById('sendBtn');
+ btn.innerText="Sending...";
+ btn.disabled=true;
+
+ try {
+   let res = await fetch("https://formsubmit.co/ajax/blakhkr85@gmail.com", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+          Category: cat,
+          Shayari: text,
+          Date: new Date().toLocaleString(),
+          _subject: "New Shyari - Dastaan",
+          _captcha: "false"
+      })
+   });
+   let data = await res.json();
+   document.getElementById('sentMsg').style.display='block';
+   document.getElementById('sentMsg').innerText = "Thank you for adding your words we will add it shortly.";
+   setTimeout(()=>{
+     closeAdd();
+     document.getElementById('newText').value='';
+     document.getElementById('sentMsg').style.display='none';
+     btn.innerText="Send for Verification";
+     btn.disabled=false;
+   },2000);
+ } catch(e){
+   alert("Mail not sent, Please check your Internet.");
+   btn.innerText="Send for Verification";
+   btn.disabled=false;
+ }
+}
+</script>
+</body>
+</html>

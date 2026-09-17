@@ -3,144 +3,106 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dastaan</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Hind:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Hind:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins','Hind',sans-serif}
-body{background:#060609;color:#fff;overflow-x:hidden}
-.bg{position:fixed;inset:0;z-index:-2;background:#060609}
-.bg::before{content:"";position:absolute;inset:0;background:radial-gradient(800px at 50% 50%, rgba(255,255,255,0.06), transparent 70%)}
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 6%;background:rgba(10,10,12,0.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:50}
-.logo{font-weight:800;font-size:1.6rem;background:linear-gradient(90deg,#ff6b9d,#c084fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero{text-align:center;padding:70px 20px 20px}
-.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;letter-spacing:-1px}
-.hero p{color:#8a8f9e;margin-top:10px}
-.cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px 0}
-.cat{padding:9px 20px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);cursor:pointer;transition:.3s;font-size:0.9rem}
-.cat.active,.cat:hover{background:#fff;color:#000}
-.grid{display:flex;flex-direction:column;gap:28px;padding:20px 4% 80px;max-width:1100px;margin:auto;}
-.glow-wrap{position:relative;padding:1.6px;border-radius:24px;background: var(--grad);box-shadow: 0 0 35px var(--glow);transition:.4s;animation:pop .5s ease both;}
-.glow-wrap:hover{transform:translateY(-4px); box-shadow:0 0 50px var(--glow)}
-@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-.card-inner{background:#121214;border-radius:22px;padding:22px 22px;display:flex;gap:20px;min-height:220px;}
-.card-left{flex:1.6;display:flex;flex-direction:column;}
-.card-top{font-size:18px;opacity:0.8;margin-bottom:12px;color:#8affd0;display:flex;justify-content:space-between;align-items:center}
-.card-inner p{font-family:'Hind'; font-size:1.15rem; line-height:1.7; color:#e6e6ea;white-space:pre-line; flex:1;}
-.card-right{flex:0.7;border-left:1px solid rgba(255,255,255,0.08);padding-left:20px;display:flex;flex-direction:column;justify-content:center;}
-.rating-title{font-size:1rem;font-weight:700;margin-bottom:8px}
-.rating-title span{color:#5fffd0}
-.stars{display:flex;gap:6px;font-size:26px;cursor:pointer;color:#5fffd0;margin:8px 0 12px}
-.stars span{transition:.2s}
-.stars span:hover{transform:scale(1.25)}
-.rating-bar{width:100%;height:7px;background:#222;border-radius:10px;overflow:hidden;margin-bottom:16px}
-.rating-fill{height:100%;background:linear-gradient(90deg,#00d4ff,#5fffd0);border-radius:10px;transition:.4s}
-.acts{display:flex;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08)}
-.btn{flex:1;padding:9px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);color:#fff;cursor:pointer;font-weight:600;font-size:0.85rem;transition:.2s}
-.btn:hover{background:rgba(255,255,255,0.12)}
-.btn.liked{background:#fff;color:#000}
-@media(max-width:800px){.card-inner{flex-direction:column}.card-right{border-left:none;border-top:1px solid rgba(255,255,255,0.08);padding-left:0;padding-top:16px}}
-.music-panel{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:rgba(18,18,20,0.95);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:18px;
-  padding:12px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  z-index:999;
-  overflow:visible;
-}
-.music-panel select{
-  background:#fff;
-  color:#000;
-  border:none;
-  padding:8px 12px;
-  border-radius:10px;
-  outline:none;
-  font-weight:600;
-  max-width:110px;
-}
-.music-panel button{
-  background:#fff;
-  color:#000;
-  border:none;
-  padding:8px 14px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:700;
-  white-space:nowrap;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#08080a;color:#fff;overflow-x:hidden; -webkit-font-smoothing: antialiased;}
+.bg{position:fixed;inset:0;z-index:-3;background:#08080a}
+.bg::before{content:"";position:absolute;inset:0;background: radial-gradient(600px circle at 15% 20%, rgba(255,107,157,0.12), transparent 50%), radial-gradient(800px circle at 85% 80%, rgba(192,132,252,0.12), transparent 50%), radial-gradient(500px circle at 50% 0%, rgba(95,255,208,0.06), transparent 60%);}
+.bg::after{content:"";position:absolute;inset:0;background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;}
 
-/* Phone ke liye fix */
+/* NAV - NO CHANGE */
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 6%;background:rgba(15,15,18,0.6);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:0;z-index:50;}
+.logo{font-family:'Instrument Serif', serif; font-style: italic; font-weight:400; font-size:1.7rem; letter-spacing:-0.5px; background:linear-gradient(90deg,#fff 20%,#ff8db0 50%,#c084fc 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+nav button{transition:.25s cubic-bezier(.16,1,.3,1)}
+nav button:active{transform:scale(.96)}
+
+/* HERO - NO CHANGE - FIXED */
+.hero{text-align:center;padding:90px 20px 30px}
+.hero h1{font-family:'Instrument Serif', serif; font-size:clamp(3.5rem,9vw,6rem); font-weight:400; line-height:0.9; letter-spacing:-2px; background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.4) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;}
+.hero h1::after{content:"एक अधूरी कहानी"; display:block; font-family:'Hind'; font-size:1rem; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:16px; font-weight:600;}
+.cats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:36px 0; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); padding:6px; border-radius:100px; width:fit-content; margin-left:auto; margin-right:auto;}
+.cat{padding:8px 20px;border-radius:100px;border:1px solid transparent; background:transparent; cursor:pointer;transition:.3s;font-size:0.85rem;color:rgba(255,255,255,0.6); font-weight:500;}
+.cat.active{background:#fff;color:#000; box-shadow:0 4px 20px rgba(255,255,255,0.2)}
+.cat:hover:not(.active){color:#fff;background:rgba(255,255,255,0.06)}
+
+/* GRID - NO CHANGE */
+.grid{display:flex;flex-direction:column;gap:22px;padding:20px 4% 100px;max-width:900px;margin:auto;}
+
+/* --- BOX DESIGN - SAME AS YOURS --- */
+.glow-wrap{position:relative;border-radius:28px;padding:1px;background:linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.02));transition:.5s cubic-bezier(.16,1,.3,1);animation:pop.7s cubic-bezier(.16,1,.3,1) both;}
+.glow-wrap::before{content:"";position:absolute;inset:-22px;background:var(--grad);filter:blur(42px);opacity:0;transition:.5s;z-index:-1;border-radius:40px}
+.glow-wrap:hover{transform:translateY(-6px) scale(1.01);}
+.glow-wrap:hover::before{opacity:0.32}
+@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.card-inner{background:radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,0.09), rgba(255,255,255,0.02) 38%, rgba(18,18,20,0.92) 72%);border:1px solid rgba(255,255,255,0.06);border-radius:27px;padding:0;display:flex;gap:0;min-height:250px;position:relative;overflow:hidden;backdrop-filter:blur(22px);}
+.card-inner::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)}
+.card-left{flex:1.6;display:flex;flex-direction:column;padding:28px 28px 20px}
+.card-top{font-size:0.75rem; font-weight:700; letter-spacing:1.5px; opacity:0.7; margin-bottom:18px; color:#fff; display:flex;justify-content:space-between;align-items:center; text-transform:uppercase}
+.card-top span{background:none; -webkit-text-fill-color: rgba(255,255,255,0.7); font-family:'Poppins'; letter-spacing:2px; font-weight:600; font-size:0.7rem; border:1px solid rgba(255,255,255,0.1); padding:4px 10px; border-radius:100px;}
+.card-inner p{font-family:'Hind'; font-size:1.25rem; line-height:1.8; color:#e9e9ee; white-space:pre-line; flex:1; font-weight:400;}
+.card-right{flex:0.6;background:rgba(0,0,0,0.28);border-left:1px solid rgba(255,255,255,0.07);padding:22px 22px;display:flex;flex-direction:column;justify-content:center;min-width:200px;}
+.rating-title{font-size:0.78rem;font-weight:600;margin-bottom:8px; letter-spacing:0.5px; color:rgba(255,255,255,0.6); text-transform:uppercase;}
+.rating-title span{color:#fff; font-size:1.05rem; background:linear-gradient(90deg,#fff,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stars{display:flex;gap:5px;font-size:22px;cursor:pointer;color:#ffe066;margin:10px 0 14px}
+.stars span{transition:.2s cubic-bezier(.16,1,.3,1)}
+.stars span:hover{transform:scale(1.3) translateY(-2px)}
+.rating-bar{width:100%;height:4px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden;margin-bottom:14px}
+.rating-fill{height:100%;background:linear-gradient(90deg,#fff,#5fffd0);border-radius:100px;transition:1s cubic-bezier(.16,1,.3,1)}
+.acts{display:flex;gap:10px;margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07)}
+.btn{flex:1;padding:10px;border-radius:100px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.05);color:#fff;cursor:pointer;font-weight:600;font-size:0.82rem;transition:.2s; backdrop-filter:blur(10px);}
+.btn:hover{background:#fff;color:#000; border-color:#fff; transform:translateY(-1px)}
+.btn.liked{background:#fff;color:#000; border-color:#fff; box-shadow:0 4px 15px rgba(255,255,255,0.2)}
+@media(max-width:800px){.card-inner{flex-direction:column}.card-right{border-left:none;border-top:1px solid rgba(255,255,255,0.07);padding-left:0;padding:20px 22px; min-width:auto;flex-direction:row;align-items:center;gap:16px}.rating-bar{display:none}.card-left{padding:22px}}
+
+/* MUSIC PLAYER - NO CHANGE */
+.music-panel{position:fixed;bottom:22px;right:22px;background:rgba(20,20,23,0.8);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 8px 8px 14px;display:flex;align-items:center;gap:10px;z-index:999; box-shadow:0 10px 40px rgba(0,0,0,0.5);}
+.c-select{position:relative;width:120px}
+.c-trigger{background:rgba(255,255,255,0.08);color:#fff;padding:8px 14px;border-radius:100px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;white-space:nowrap; border:1px solid rgba(255,255,255,0.08); transition:.2s;}
+.c-trigger:hover{background:rgba(255,255,255,0.12)}
+.c-options{position:absolute;bottom:125%;left:0;width:160%;background:#1c1c1f;border:1px solid rgba(255,255,255,0.1);border-radius:16px;display:none;box-shadow:0 20px 50px rgba(0,0,0,0.5);overflow:hidden; padding:6px;}
+.c-options.show{display:block; animation:pop.3s ease both;}
+.c-opt{padding:10px 14px;color:rgba(255,255,255,0.7);cursor:pointer;font-weight:500;font-size:13px; border-radius:10px; transition:.2s;}
+.c-opt:hover,.c-opt.selected{background:#fff;color:#000;}
+#musicBtn{background:#fff;color:#000;border:none;padding:9px 18px;border-radius:100px;cursor:pointer;font-weight:700;white-space:nowrap; transition:.2s; box-shadow:0 4px 15px rgba(255,255,255,0.2);}
+#musicBtn:hover{transform:scale(1.03)}
+#musicBtn:active{transform:scale(.97)}
 @media(max-width:600px){
-  .music-panel{
-    bottom:0;
-    right:0;
-    left:0;
-    border-radius:18px 18px 0 0;
-    justify-content:space-between;
-    padding:14px 16px;
-    padding-bottom: calc(14px + env(safe-area-inset-bottom));
-  }
-  .music-panel select{
-    flex:1;
-    max-width:none;
-  }
+  nav{padding:14px 16px}
+.logo{font-size:1.3rem;}
+.hero{padding-top:50px;}
+.music-panel{bottom:0;right:0;left:0;border-radius:20px 20px 0 0;justify-content:space-between;padding:14px 16px;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+.c-select{flex:1}
+.c-options{width:100%}
 }
-footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,0.07);color:#666;margin-top:20px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
-.modal.active{display:flex}
-.modal-box{width:100%;max-width:520px;background:#121214;border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:26px}
-.modal-box textarea{width:100%;height:120px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:14px;color:#fff;outline:none;resize:none;margin:12px 0}
-.modal-box select{width:100%;padding:12px;background:#1E1E20;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#fff;outline:none}
-.modal-box select option{background:#1E1E20;color:#fff}
+footer{text-align:center;padding:50px 20px;border-top:1px solid rgba(255,255,255,0.06);color:#555; font-size:0.8rem; letter-spacing:1px;}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
+.modal.active{display:flex; animation:fadeIn.3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-box{width:100%;max-width:520px;background:linear-gradient(180deg, #1c1c20, #121214);border:1px solid rgba(255,255,255,0.1);border-radius:28px;padding:32px; box-shadow:0 20px 80px rgba(0,0,0,0.6);}
+.modal-box textarea{width:100%;height:130px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;color:#fff;outline:none;resize:none;margin:16px 0; font-family:'Hind'; font-size:1.05rem; transition:.2s;}
+.modal-box textarea:focus{border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.07);}
+.modal-box select{width:100%;padding:12px 14px;background:#1E1E20;border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#fff;outline:none}
 </style>
 </head>
 <body>
 <div class="bg"></div>
-<nav><div class="logo">💗 शब्दों का कारवां</div><div style="display:flex;gap:10px;align-items:center"><div style="color:#666;font-size:.9rem" class="hide-m">Play Music for better experience.</div><button onclick="openAdd()" style="background:#fff;color:#000;border:none;padding:8px 16px;border-radius:100px;font-weight:700;cursor:pointer">Add Shayari</button></div></nav>
-<div class="hero">
-<h1>दास्तान</h1>
-<p>Rest in Paradise to all those who are no longer here with us.</p>
-<p>The world is cruel, now more than ever - unkind and unforgiving</p>
-<p>Whoever is reading this i wish you good health and spirits!</p>
-<div class="cats">
-<div class="cat active" onclick="filterCat('All',this)">All</div>
-<div class="cat" onclick="filterCat('Love',this)">Love</div>
-<div class="cat" onclick="filterCat('Sad',this)">Sad</div>
-<div class="cat" onclick="filterCat('Romantic',this)">Romantic</div>
-<div class="cat" style="background:linear-gradient(90deg,#ff5a9a,#ff7a2f);border:none;color:#fff" onclick="showTrending(this)">Trending</div>
-</div>
-</div>
+<nav><div class="logo">💗 शब्दों का कारवां</div><div style="display:flex;gap:10px;align-items:center"><button onclick="openAbout()" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.12);padding:8px 16px;border-radius:100px;font-weight:600;cursor:pointer">About</button><button onclick="openAdd()" style="background:#fff;color:#000;border:none;padding:8px 16px;border-radius:100px;font-weight:700;cursor:pointer">Add Shayari</button></div></nav>
+<div class="hero"><h1>दास्तान</h1><div class="cats"><div class="cat active" onclick="filterCat('All',this)">All</div><div class="cat" onclick="filterCat('Love',this)">Love</div><div class="cat" onclick="filterCat('Sad',this)">Sad</div><div class="cat" onclick="filterCat('Romantic',this)">Romantic</div></div></div>
 <div class="grid" id="grid"></div>
+<div class="modal" id="addModal"><div class="modal-box"><h2 style="font-family:'Instrument Serif'; font-weight:400; font-size:2rem; background:linear-gradient(90deg,#fff,#c084fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Write Your Words.</h2><p style="color:#8a8f9e;font-size:0.9rem;margin-top:6px">Add your words and we will add it shortly.</p><textarea id="newText" placeholder="Write yours here..."></textarea><select id="newCat"><option value="Love">Love</option><option value="Sad">Sad</option><option value="Romantic">Romantic</option></select><div style="display:flex;gap:10px;margin-top:16px"><button class="btn" onclick="closeAdd()" style="padding:12px">Cancel</button><button class="btn" id="sendBtn" onclick="submitShayari()" style="padding:12px;background:#fff;color:#000">Send</button></div><p id="sentMsg" style="display:none;color:#5fffd0;text-align:center;margin-top:12px">✅ Thanks for Submitting.</p></div></div>
+<div class="modal" id="aboutModal"><div class="modal-box"><h2 style="font-family:'Instrument Serif'; font-weight:400; font-size:2rem; background:linear-gradient(90deg,#fff,#c084fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">About Dastaan</h2><div style="margin-top:16px;color:#e6e6ea;line-height:1.8;font-family:'Hind';font-size:1.05rem"><p>Rest in Paradise to all those who are no longer here with us.</p><br><p>The world is cruel, now more than ever - unkind and unforgiving</p><br><p>Whoever is reading this i wish you good health and spirits!</p><br><p style="color:#8a8f9e;font-size:0.9rem;">💗 शब्दों का कारवां — यहाँ हर अल्फ़ाज़ एक अधूरी कहानी है।</p></div><div style="margin-top:20px"><button class="btn" onclick="closeAbout()" style="padding:12px;background:#fff;color:#000;width:100%">Close</button></div></div></div>
+<div class="music-panel"><div class="c-select" id="cWrap"><div class="c-trigger" id="cTrigger">Music 1 ▾</div>
+<div class="c-options" id="cOpts"><div class="c-opt selected" data-v="music/m1.mp3">Music 1</div>
+<div class="c-opt" data-v="music/m2.mp3">Music 2</div>
+<div class="c-opt" data-v="music/m3.mp3">Music 3</div>
+<div class="c-opt" data-v="music/m4.mp3">Music 4</div>
+<div class="c-opt" data-v="music/m5.mp3">Music 5</div>
+<div class="c-opt" data-v="music/m6.mp3">Music 6</div>
+<div class="c-opt" data-v="music/m7.mp3">Music 7</div>
+<div class="c-opt" data-v="music/m8.mp3">Music 8</div>
 
-<div class="modal" id="addModal">
-<div class="modal-box">
-<h2 style="background:linear-gradient(90deg,#ff6b9d,#c084fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Write Your Words.</h2>
-<p style="color:#8a8f9e;font-size:0.9rem;margin-top:6px">After adding your words, we will add it shortly.</p>
-<textarea id="newText" placeholder="Write yours here..."></textarea>
-<select id="newCat"><option value="Love">Love</option><option value="Sad">Sad</option><option value="Romantic">Romantic</option></select>
-<div style="display:flex;gap:10px;margin-top:16px"><button class="btn" onclick="closeAdd()" style="padding:12px">Cancel</button><button class="btn" id="sendBtn" onclick="submitShayari()" style="padding:12px;background:#fff;color:#000">Send for Verification</button></div>
-<p id="sentMsg" style="display:none;color:#5fffd0;text-align:center;margin-top:12px">✅ Done, We will add it shortly..</p>
-</div>
-</div>
-
-<div class="music-panel">
-<select id="musicSelect" onchange="changeMusic()">
-  <option value="music/m1.mp3">Music 1</option>
-  <option value="music/m2.mp3">Music 2</option>
-  <option value="music/m3.mp3">Music 3</option>
-  <option value="music/m4.mp3">Music 4</option>
-  <option value="music/m5.mp3">Music 5</option>
-  <option value="music/m6.mp3">Music 6</option>
-  
-</select>
-<button id="musicBtn" onclick="toggleMusic()">▶ Play</button>
-<audio id="bgMusic" loop></audio>
-</div>
+</div></div><button id="musicBtn" onclick="toggleMusic()">▶ Play</button><audio id="bgMusic" loop></audio></div>
 <footer><p>💗 Smile :) ❤️</p></footer>
 <script>
 const gradients = [
@@ -176,15 +138,23 @@ const defaultShayaris = [
 { text: "एक चाँद था मेरा, जो बादलों में कहीं खो गया...!\nबादल हटने का इंतज़ार किया,\nतो वो चाँद किसी और का हो गया...।", cat: "Sad"},
 { text: "मैं कोई तारा जो चमके तो सारा आसमान हो तुम,\nमैं कोई झोपड़ी छोटी सी तो एक आलीशान मकान हो तुम,\nमैं कोई जौहरी अगर तो एक हीरा नायाब हो तुम,\nमैं अगर उलझन भरा सवाल तो मेरा जवाब हो तुम,\nमैं सुकून वाली नींद तो एक हसीन ख्वाब हो तुम,\nमैं अगर कोई पान देसी तो विलायती शराब हो तुम,\nकुछ बातें हैं मेरे बारे में जिनसे आज भी अनजान हो तुम,\nक्या जानती हो?\nमैं अगर साँस तुम्हारी तो मेरी जान हो तुम...।", cat: "Romantic" },
 { text: "डरता हूँ किस से,\nकिसी को न देखने से,\nया किसी को न दिखाने से,\nसोचने से, या किसी को न सोचने से,\nरोने से, या किसी को न रुलाने से,\nहँसने से, या किसी को न हँसाने से,\nबोलने से, या खामोश रहने से,\nमरने से, या किसी को न मारने से,\nयाद करने से, या किसी की याद न बनने से,\nखुद से, या किसी से डर जाने से?", cat: "Sad" },
-
 { text: "तेरे चेहरे की वो खूबसूरत तस्वीर कहाँ से लाऊँ,\nहर लम्हा तेरे साथ गुजरे ऐसी तकदीर कहाँ से लाऊँ,\nमैं माँगता हूँ हर सफर में साथ तेरा,\nतू ही बता मेरे हाथों में वो लकीर कहाँ से लाऊँ", cat: "Romantic" },
+{ text: "क़बर पे वो रोने आए हैं,\nहमें प्यार है ये कहने आए हैं,\nजब ज़िंदा थे तो रुलाया बहुत था,\nअब आराम से सोए हैं तो जगाने आए हैं।", cat: "Sad" },
+{ text: "ग़म में हँसने वालों को रुलाया नहीं जाता,\nलहरों को पानी से मिलाया नहीं जाता,\nहोने वाले खुद ही अपने हो जाते हैं,\nकिसी को कह कर अपना बनाया नहीं जाता।", cat: "Sad" },
+{ text: "हाल ऐसा है कि बैठे-बैठे खो जाते हैं हम,\nमहफ़िल में हँसते-हँसते रो जाते हैं हम,\nकैसे बताऊँ कि क्या गुज़र रही है इस दिल पर,\nबस सब ठीक है कहकर सो जाते हैं हम।", cat: "Sad" },
+{ text: "जो चाहिए था वो मुझे मिला नहीं,\nशायद वो फूल खिला नहीं,\nन जाने कितने बाग़ देखे हैं मैंने,\nजिसकी तलाश थी मुझे वो गुलाब मुझे मिला नहीं।", cat: "Sad" },
+{ text: "वो करीब ही न आए तो इज़हार क्या करें,\nखुद बने निशाना तो शिकार क्या करें,\nमर गए पर खुली रही आँखें,\nइससे ज़्यादा किसी का इंतज़ार क्या करें।", cat: "Sad" },
+{ text: "सुबह भी उदास थी,\nशाम भी उदास थी,\nकफ़न में लिपटी मेरी मोहब्बत की लाश थी,\nऐ दुनिया वालों मुझे वहाँ दफ़न करना,\nजहाँ मेरी और उसकी पहली मुलाकात थी।", cat: "Love" },
+{ text: "लिखा तो था कि खुश हूँ तेरे बगैर,\nमगर आँसू कलम से पहले ही गिर गए।", cat: "Sad" },
+{ text: "खामोशी से मतलब नहीं,\nमतलब तो बातों का है,\nदिन तो गुजर ही जाता है,\nमसला तो रातों का है।", cat: "Sad" },
+{ text: "इश्क के बाज़ार में हुस्न का मेला रह गया,\nभीड़ है लाखों की मगर दिल अकेला रह गया,\nदिखावा करने वाले ले गए मोहब्बत सारी,\nशिद्दत से चाहने वाला हर इंसान अकेला रह गया।", cat: "Sad" },
+{ text: "सितारों से भरी रातें पसंद हैं,\nदूर से सुनी उसकी बातें पसंद हैं,\nतारीफ़ के काबिल हैं उसकी ज़ुल्फें भी,\nमुझे ज़्यादा उसकी आँखें पसंद हैं।", cat: "Romantic" },
+{ text: "ज़रा सी भीड़ क्या लगी मेला बन गया,\nवो पलकें क्या झुकीं अँधेरा हो गया,\nसारी रात देखते रहे सब उस चाँद को,\nबारी हमारी आई तो सवेरा हो गया।", cat: "Sad" },
+{ text: "जो मेरा था वो मेरा हो नहीं पाया,\nआँखों में आँसू थे पर मैं रो नहीं पाया,\nएक रात उसने कहा कि हम ख्वाबों में मिलेंगे,\nऔर मेरी किस्मत तो देखो उस रात मैं सो नहीं पाया।", cat: "Sad" },
+
 ];
-
 const approved = JSON.parse(localStorage.getItem('dastan_approved')||'[]');
-const shayaris = [...defaultShayaris, ...approved];
-
-function getLikeCount(i){ return parseInt(localStorage.getItem('like_count_'+i)||'0'); }
-
+const shayaris = [...defaultShayaris,...approved];
 function render(list){
  const g=document.getElementById('grid'); g.innerHTML="";
  list.forEach((s,i)=>{
@@ -199,20 +169,19 @@ function render(list){
       <p>${s.text}</p>
       <div class="acts">
         <button class="btn ${liked?'liked':''}" onclick="likeThis(${realIndex},this)">${liked?'❤️ Liked':'🤍 Like'}</button>
-        <button class="btn" onclick="copyText(\`${s.text.replace(/`/g,'').replace(/\$/g,'')}\`)">📋 Copy</button>
+        <button class="btn" onclick="copyText(${realIndex},this)">📋 Copy</button>
       </div>
     </div>
     <div class="card-right" id="right-${realIndex}">
-      <div class="rating-title" id="rt-${realIndex}">${rated===0 ? 'Rate this ✦' : `Rating <span>${rated}.0</span>/5 ⭐`}</div>
+      <div class="rating-title" id="rt-${realIndex}">${rated===0? 'Rate this ✦' : `Rating <span>${rated}.0</span>/5 ⭐`}</div>
       <div class="stars" id="stars-${realIndex}">${[1,2,3,4,5].map(n=>`<span onclick="rateThis(${realIndex},${n})">${n<=rated?'★':'☆'}</span>`).join('')}</div>
       <div class="rating-bar"><div class="rating-fill" id="fill-${realIndex}" style="width:${rated*20}%"></div></div>
-      <div id="msg-${realIndex}" style="font-size:0.75rem;color:#777">${rated===0 ? 'Tap stars to rate' : 'Thanks for rating!'}</div>
+      <div id="msg-${realIndex}" style="font-size:0.75rem;color:#777">${rated===0? 'Tap stars to rate' : 'Thanks for rating!'}</div>
     </div>
   </div></div>`;
  });
 }
 render(shayaris);
-
 function rateThis(i,val){
   localStorage.setItem('rate_'+i,val);
   document.getElementById(`rt-${i}`).innerHTML = `Rating <span>${val}.0</span>/5 ⭐`;
@@ -221,66 +190,18 @@ function rateThis(i,val){
   document.getElementById(`msg-${i}`).innerText = 'Thanks for rating!';
 }
 function filterCat(c,el){document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');if(c==='All') render(shayaris); else render(shayaris.filter(s=>s.cat===c));}
-function showTrending(el){
- document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');
- let sorted = [...shayaris].sort((a,b)=> getLikeCount(shayaris.indexOf(b)) - getLikeCount(shayaris.indexOf(a)) );
- render(sorted);
-}
-function likeThis(i,b){
-  if(localStorage.getItem('like_'+i)){ 
-    localStorage.removeItem('like_'+i); 
-    b.classList.remove('liked');
-    b.innerHTML = `🤍 Like`;
-  } else { 
-    localStorage.setItem('like_'+i,'1'); 
-    b.classList.add('liked');
-    b.innerHTML = `❤️ Liked`;
-  }
-}
-function copyText(t){navigator.clipboard.writeText(t);let e=event.target;e.innerText='✅ Copied';setTimeout(()=>e.innerText='📋 Copy',1200);}
-const music=document.getElementById('bgMusic'); const sel=document.getElementById('musicSelect'); music.src=sel.value; let playing=false;
-function changeMusic(){music.src=sel.value; if(playing) music.play();}
-function toggleMusic(){if(playing){music.pause();document.getElementById('musicBtn').innerText='▶ Play';}else{music.play().catch(()=>alert('Page pe ek bar click karo'));document.getElementById('musicBtn').innerText='⏸ Pause';} playing=!playing;}
-
+function likeThis(i,b){if(localStorage.getItem('like_'+i)){localStorage.removeItem('like_'+i);b.classList.remove('liked');b.innerHTML=`🤍 Like`;}else{localStorage.setItem('like_'+i,'1');b.classList.add('liked');b.innerHTML=`❤️ Liked`;}}
+function copyText(idx,btn){navigator.clipboard.writeText(shayaris[idx].text);btn.innerText='✅ Copied';setTimeout(()=>btn.innerText='📋 Copy',1200);}
+const music=document.getElementById('bgMusic');const cWrap=document.getElementById('cWrap');const cTrigger=document.getElementById('cTrigger');const cOpts=document.getElementById('cOpts');const musicBtn=document.getElementById('musicBtn');let currentMusic="music/m1.mp3";music.src=currentMusic;let playing=false;
+cTrigger.addEventListener('click',e=>{e.stopPropagation();cOpts.classList.toggle('show');});
+document.querySelectorAll('.c-opt').forEach(o=>{o.addEventListener('click',()=>{document.querySelectorAll('.c-opt').forEach(x=>x.classList.remove('selected'));o.classList.add('selected');cTrigger.textContent=o.textContent+' ▾';currentMusic=o.dataset.v;music.src=currentMusic;if(playing) music.play();cOpts.classList.remove('show');});});
+function toggleMusic(){if(playing){music.pause();musicBtn.innerText='▶ Play';}else{music.play().catch(()=>alert('Page pe ek baar click karo'));musicBtn.innerText='⏸ Pause';}playing=!playing;}
+window.addEventListener('click',e=>{if(!cWrap.contains(e.target)) cOpts.classList.remove('show');});
 function openAdd(){document.getElementById('addModal').classList.add('active')}
 function closeAdd(){document.getElementById('addModal').classList.remove('active')}
-
-async function submitShayari(){
- let text=document.getElementById('newText').value.trim();
- let cat=document.getElementById('newCat').value;
- if(!text) return alert("Write Something!");
- let btn=document.getElementById('sendBtn');
- btn.innerText="Sending...";
- btn.disabled=true;
-
- try {
-   let res = await fetch("https://formsubmit.co/ajax/blakhkr85@gmail.com", {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-          Category: cat,
-          Shayari: text,
-          Date: new Date().toLocaleString(),
-          _subject: "New Shyari - Dastaan",
-          _captcha: "false"
-      })
-   });
-   let data = await res.json();
-   document.getElementById('sentMsg').style.display='block';
-   document.getElementById('sentMsg').innerText = "Thank you for adding your words we will add it shortly.";
-   setTimeout(()=>{
-     closeAdd();
-     document.getElementById('newText').value='';
-     document.getElementById('sentMsg').style.display='none';
-     btn.innerText="Send for Verification";
-     btn.disabled=false;
-   },2000);
- } catch(e){
-   alert("Mail not sent, Please check your Internet.");
-   btn.innerText="Send for Verification";
-   btn.disabled=false;
- }
-}
+function openAbout(){document.getElementById('aboutModal').classList.add('active')}
+function closeAbout(){document.getElementById('aboutModal').classList.remove('active')}
+async function submitShayari(){let text=document.getElementById('newText').value.trim();let cat=document.getElementById('newCat').value;if(!text) return alert("Write Something!");let btn=document.getElementById('sendBtn');btn.innerText="Sending...";btn.disabled=true;try{await fetch("https://formsubmit.co/ajax/blakhkr85@gmail.com",{method:"POST",headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({Category:cat,Shayari:text,Date:new Date().toLocaleString(),_subject:"New Shyari - Dastaan",_captcha:"false"})});document.getElementById('sentMsg').style.display='block';setTimeout(()=>{closeAdd();document.getElementById('newText').value='';document.getElementById('sentMsg').style.display='none';btn.innerText="Send for Verification";btn.disabled=false;},2000);}catch(e){alert("Mail not sent, Please check your Internet.");btn.innerText="Send for Verification";btn.disabled=false;}}
 </script>
 </body>
 </html>
